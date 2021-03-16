@@ -4,7 +4,7 @@ First using of type-annotations
 '''
 
 
-def add(a: float, b: float)-> float:
+def add(a: float, b: float) -> float:
     '''
     Adding two params that are type
     annotated
