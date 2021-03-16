@@ -8,7 +8,7 @@ from typing import Union, Tuple
 V = Union[int, float]
 
 
-def to_kv(k: str, v: V)-> Tuple[str, float]:
+def to_kv(k: str, v: V) -> Tuple[str, float]:
     '''
     Definition that takes two different arguments
     k: string
