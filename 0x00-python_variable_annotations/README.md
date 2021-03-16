@@ -1,1 +1,2 @@
-This project is about python variables
+This project is about python variables and annotation
+
