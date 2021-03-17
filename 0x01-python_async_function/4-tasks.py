@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-'''Tasks'''
+'''
+Modifying Tasks with
+a call off task_wait_random
+'''
 import asyncio
 from typing import List
 
