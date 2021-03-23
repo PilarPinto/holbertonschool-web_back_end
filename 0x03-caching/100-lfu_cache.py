@@ -5,6 +5,7 @@ from base_caching import BaseCaching
 
 class LFUCache(BaseCaching):
     '''Least Recent used cache class'''
+
     def __init__(self):
         '''Constructor of the class'''
         self.counter = 0
