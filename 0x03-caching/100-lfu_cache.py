@@ -25,8 +25,7 @@ class LFUCache(BaseCaching):
             self.cache_data[key] = item
             if len(self.cache_data) > BaseCaching.MAX_ITEMS:
                 least_used = min(self.used.values())
-                for k, _ in sorted(self.ages.items(),
-                                   key=lambda x: x[1]):
+                for k, _ in sorted(self.ages.items(), key=lambda x: x[1]):
                     if self.used[k] == least_used:
                         self.cache_data.pop(k)
                         self.ages.pop(k)
