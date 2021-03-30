@@ -7,7 +7,7 @@ patterns = {
     "password": "[a-zA-Z]*",
     "date_of_birth": r"([0-9]{2}\/){2}[0-9]{4}",
     "name": "[a-zA-Z]*",
-    "email": "[a-zA-Z]*@[a-zA-Z]*\.[a-zA-Z]*",
+    "email": r"[a-zA-Z]*@[a-zA-Z]*\.[a-zA-Z]*",
 }
 
 
