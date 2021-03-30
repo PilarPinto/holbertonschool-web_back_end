@@ -15,7 +15,6 @@ def filter_datum(fields: List[str], redaction: str,
                  message: str, separator: str) -> str:
     '''Filter definition using Regex'''
     for field in fields:
-        pattern = field + "=" + patterns[field] + separator + "{1}"
-        message = re.sub(pattern, "{}={}{}".format(
-            field, redaction, separator), message)
+        message = re.sub(field + "=" + patterns[field] + separator + "{1}",
+                         "{}={}{}".format(field, redaction, separator), message)
     return message
