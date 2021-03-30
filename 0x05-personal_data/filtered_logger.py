@@ -12,7 +12,7 @@ patterns = {
 
 
 def filter_datum(fields: List[str], redaction: str,
-                 message:str, separator: str) -> str:
+                 message: str, separator: str) -> str:
     '''Filter definition using Regex'''
     for field in fields:
         pattern = field + "=" + patterns[field] + separator + "{1}"
