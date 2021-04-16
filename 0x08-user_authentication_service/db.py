@@ -49,3 +49,16 @@ class DB:
         if not query.first():
             raise NoResultFound
         return query.first()
+
+    def update_user(self, user_id: int, **kwargs):
+        """Uses find_user_by to locate the user and then updates it with the
+        attributes passed as kwargs
+        """
+        try:
+            user = self.find_user_by(id=user_id)
+            for key, val in kwargs.items():
+                setattr(user, key, val)
+            self._session.commit()
+            return None
+        except Exception:
+            raise ValueError
