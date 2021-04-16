@@ -51,8 +51,7 @@ class DB:
         return query.first()
 
     def update_user(self, user_id: int, **kwargs):
-        """Uses find_user_by to locate the user and then updates it with the
-        attributes passed as kwargs
+        """Update user that passes by the args
         """
         try:
             user = self.find_user_by(id=user_id)
@@ -61,4 +60,6 @@ class DB:
             self._session.commit()
             return None
         except Exception:
-            raise ValueError
+            for i in kwargs.keys():
+                if i not in User.__table__.columns.keys():
+                    raise ValueError
