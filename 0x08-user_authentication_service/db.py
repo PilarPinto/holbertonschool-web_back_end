@@ -28,15 +28,14 @@ class DB:
         return self.__session
 
     def add_user(self, email: str, hashed_password: str) -> User:
-        """Adds and saves a new user to the DB"""
-        new_user = User(email=email, hashed_password=hashed_password)
-        self._session.add(new_user)
+        """Add user in database"""
+        user = User(email=email, hashed_password=hashed_password)
+        self._session.add(user)
         self._session.commit()
-        return new_user
+        return user
 
     def find_user_by(self, **filters) -> User:
-        """Returns the first row found in the users table as filtered by
-        the method’s input arguments"""
+        """Returns the  matches first row"""
         if not User.__dict__.get(*filters):
             raise InvalidRequestError
         query = self._session.query(User).filter_by(**filters)
