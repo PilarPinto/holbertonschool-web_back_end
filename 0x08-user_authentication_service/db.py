@@ -50,16 +50,14 @@ class DB:
             raise NoResultFound
         return query.first()
 
-    def update_user(self, user_id: int, **kwargs):
+    def update_user(self, user_id: int, **kwargs) -> None:
         """Update user that passes by the args
         """
-        try:
-            user = self.find_user_by(id=user_id)
-            for key, val in kwargs.items():
-                setattr(user, key, val)
-            self._session.commit()
-            return None
-        except Exception:
-            for i in kwargs.keys():
-                if i not in User.__table__.columns.keys():
-                    raise ValueError
+        user = self.find_user_by(id=user_id)
+        for key, val in kwargs.items():
+            setattr(user, key, val)
+        self._session.commit()
+
+        for i in kwargs.keys():
+            if i not in User.__table__.columns.keys():
+                raise ValueError
