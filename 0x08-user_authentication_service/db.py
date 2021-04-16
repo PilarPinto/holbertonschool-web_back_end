@@ -51,14 +51,13 @@ class DB:
         return query.first()
 
     def update_user(self, user_id: int, **kwargs) -> None:
-        """Update user that passes by the args
-        """
-        user = self.find_user_by(id=user_id)
-        for i in kwargs.keys():
-            if i not in User.__table__.columns.keys():
-                raise ValueError
+        """Updates user that passes in the args"""
+        user_to_update = self.find_user_by(id=user_id)
 
         for key, val in kwargs.items():
-            setattr(user, key, val)
+            if hasattr(user_to_update, key):
+                setattr(user_to_update, key, val)
+            else:
+                raise ValueError
 
         self._session.commit()
