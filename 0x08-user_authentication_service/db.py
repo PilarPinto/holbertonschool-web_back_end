@@ -34,21 +34,18 @@ class DB:
         self._session.commit()
         return new_user
 
-    def find_user_by(self, **kwargs) -> User:
+    def find_user_by(self, **filters) -> User:
         """Returns the first row found in the users table as filtered by
         the method’s input arguments"""
-        if not kwargs:
+        if not User.__dict__.get(*filters):
             raise InvalidRequestError
-
-        search_user = self._session.query(User).filter_by(**kwargs).first()
-
-        if not search_user:
+        query = self._session.query(User).filter_by(**filters)
+        if not query.first():
             raise NoResultFound
-
-        return search_user
+        return query.first()
 
     def update_user(self, user_id: int, **kwargs) -> None:
-        """Updates the user"""
+        """Update user that passes by the args"""
         user_to_update = self.find_user_by(id=user_id)
 
         for key, val in kwargs.items():
