@@ -9,6 +9,10 @@ Base = declarative_base()
 
 
 class User(Base):
+    """
+    Class that maps the user
+    attributes
+    """
     __tablename__ = 'users'
 
     id = Column(Integer, primary_key=True)
