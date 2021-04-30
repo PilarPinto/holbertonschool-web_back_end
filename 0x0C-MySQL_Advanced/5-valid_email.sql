@@ -1,4 +1,4 @@
---Creates a trigger that resets
+--Creates a trigger that resets an attr
 DELIMITER //
 CREATE TRIGGER resets
 BEFORE UPDATE ON users
