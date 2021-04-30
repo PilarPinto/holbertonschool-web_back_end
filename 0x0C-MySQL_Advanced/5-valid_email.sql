@@ -1,6 +1,6 @@
 --Creates a trigger that resets an attr
 DELIMITER //
-CREATE TRIGGER resets
+CREATE TRIGGER reset_valid
 BEFORE UPDATE ON users
 FOR EACH ROW
 BEGIN
