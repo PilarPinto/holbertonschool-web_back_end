@@ -1,14 +1,14 @@
 const fs = require('fs');
 
 function countStudents(path) {
-  if (!fs.existsSync(path)) throw Error('Cannot load the database'); 
+  if (!fs.existsSync(path)) throw Error('Cannot load the database');
   try {
-    const inFields = {}; 
+    const inFields = {};
     const data = fs.readFileSync(path, 'utf-8').split('\n');
 
     for (let i = 1; i < data.length; i += 1) {
       const line = data[i].split(',');
-      if (inFields[line[3]]) { 
+      if (inFields[line[3]]) {
         inFields[line[3]].counter += 1;
         inFields[line[3]].students.push(` ${line[0]}`);
       } else {
